@@ -1,0 +1,53 @@
+{% extends "layouts/base.html" %}
+
+{% block main %}
+<div class="row justify-content-center">
+  <div class="col-md-7 col-lg-5 col-xl-4">
+    <div class="mt-4">
+      {% if not user %}
+      <h4 class="text-center">FTC Backyard</h4>
+
+      <form method="post">
+
+        {% if errors.credentials %}
+          <div class="form-errortext text-center">{{errors.credentials}}</div>
+        {% endif %}
+
+        <div class="form-group">
+          <label for="credentialsEmail">User name</label>
+          <input class="form-control"
+          id="credentialsName"
+          type="name"
+          name="credentials[name]"
+          value="{{credentials.name}}"
+          placeholder="用户名"
+          required>
+        </div>
+
+        <div class="form-group">
+          <label for="credentialsPassword">Password</label>
+          <input class="form-control"
+          id="credentialsPassword"
+          type="password"
+          name="credentials[password]"
+          placeholder="密码"
+          required>
+        </div>
+        <div class="form-check clearfix">
+            <input class="form-check-input"
+            id="rememberMe"
+            type="checkbox"
+            name="rememberMe"
+            value="true"
+            checked>
+            <label for="rememberMe">Remember Me</label>
+        </div>
+
+        <button class="btn btn-block btn-primary" type="submit">Login</button>
+
+      </form>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{
+    "ignore": [
+      "public/**",
+      "test/**"
+    ],
+    "env": {
+      "NODE_ENV": "development",
+      "PORT": 3100,
+      "DEBUG": "user*"
+    },
+    "verbose": true,
+    "ext": "js json"
+  }

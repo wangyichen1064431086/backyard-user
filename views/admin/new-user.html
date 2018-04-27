@@ -1,0 +1,76 @@
+{% extends "layouts/content.html" %} 
+
+{% block content %}
+
+<div class="subhead border-bottom mb-3 pb-2">
+  <h2 class="subhead-heading">
+    Create a new CMS user
+  </h2>
+</div>
+
+<form accept-charset="UTF-8"
+  method="post">
+
+  <div style="margin:0;padding:0;display:inline">
+    <input type="hidden" name="authenticityToken" value="{{authenticity}}">
+  </div>
+    
+  <div class="form-group">
+    <label for="userName">User name</label>
+    <input class="form-control"
+    id="userName"
+    type="text"
+    name="user[name]"
+    value="{{user.name}}"
+    required placeholder="User name for login">
+  
+    <small class="form-text text-muted">Required. 1 ~ 60 alphanumerics.</small>
+  
+  </div>
+    
+  <div class="form-group">
+    <label for="userEmail">Email</label>
+    <input class="form-control"
+    id="userEmail"
+    type="email"
+    name="user[email]"
+    value="{{user.email}}"
+    required
+    placeholder="@ftchinese.com">
+  
+    <small class="form-text text-muted">Required</small>
+  </div>
+    
+  <div class="form-group">
+    <label for="userDisplayName">Display Name</label>
+    
+    <input class="form-control"
+    id="userDisplayName"
+    type="text"
+    name="user[displayName]"
+    value="{{user.displayName}}"
+    placeholder="Display Name">
+  
+    <small class="form-text text-muted">Optional. Max 120 characters</small>
+  </div>
+    
+  <div class="form-group border-bottom pb-2">
+    <label for="userDepartment">Department</label>
+    <input class="form-control"
+    id="userDepartment"
+    type="text"
+    name="user[department]"
+    value="{{user.department}}"
+    placeholder="">
+  
+    <small class="form-text text-muted">Optional</small>
+  </div>
+
+  <button type="submit" class="btn btn-primary">
+    Create
+  </button>
+  <a href="/admin/users" class="btn">
+    Cancel
+  </a>
+</form>
+{% endblock %}

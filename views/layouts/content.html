@@ -1,0 +1,30 @@
+{% extends "layouts/base.html" %}
+
+{% block main %}
+
+<div class="row">
+  <div class="col-sm-3" role="navigation">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="/settings/profile">我的资料</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/settings/password">修改密码</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/settings/myft">ftchinese.com账号</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/users">User Admin</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/vip">VIP Admin</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-sm-9">
+    {% block content %}{% endblock %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "layouts/content.html" %} 
+
+{% block content %}
+<p>绑定ftchinese.com账号以后，该账号可以申请获取付费用户权限</p>
+{% if user.myftEmail %}
+<h5>当前已绑定ftchinese.com账号</h5>
+<p>{{user.myftEmail}}</p>
+<p>VIP状态：
+  {% if user.vipStatus == "not-applied" %}
+  尚未申请 <a href="/settings/myft/vip">申请</a>
+  {% elif user.vipStatus == "pending" %}
+  申请已发出，请等待管理员审核
+  {% elif user.vipStatus == "granted" %}
+  已获得
+  {% elif user.vipStatus == "rejected" %}
+  申请被拒 <a href="/settings/myft/vip">重新申请</a>
+  {% elif user.vipStatus == "revoked" %}
+  资格被收回 <a href="/settings/myft/vip">重新申请</a>
+  {% endif %}
+</p>
+{% endif %}
+
+
+<section>
+  {% if user.myftEmail %}
+  <h5>更改绑定的ftchinese.com账号</h5>
+  <small class="form-text text-muted">更改绑定邮箱会取消您的VIP资格，绑定新邮箱以后需要重新申请</small>
+  {% else %}
+  <h5>验证并绑定我在ftchinese.com上的账号</h5>
+  {% endif %}
+
+  <form accept-charset="UTF-8" method="post">
+    <div>
+      <input type="hidden" name="authenticityToken" value="{{authenticity}}">
+      <input type="hidden" name="currentEmail" value="{{user.myftEmail}}">
+    </div>
+    <div class="form-group">
+      <label for="">邮箱</label>
+      <input class="form-control"
+      type="email"
+      name="credentials[email]"
+      value="{{credentials.email}}"
+      placeholder="登录ftchinese.com的邮箱"
+      required>
+
+      {% if errors.email %}
+        <div class="form-errortext">{{errors.email}}</div>
+      {% endif %}
+    </div>
+    <div class="form-group">
+      <label for="">密码</label>
+      <input class="form-control"
+      type="password"
+      name="credentials[password]"
+      placeholder="登录ftchinese.com的密码"
+      required>
+      {% if errors.password %}
+        <div class="form-errortext">{{errors.password}}</div>
+      {% endif %}
+    </div>
+    
+    <button class="btn btn-primary" type="submit">验证并绑定</button>
+  </form>
+</section>
+
+{% endblock %}
