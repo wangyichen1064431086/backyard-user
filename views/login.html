@@ -22,6 +22,10 @@
           value="{{credentials.name}}"
           placeholder="用户名"
           required>
+          <!-- 
+            - 这样写：name="credentials[name]"，（经过bodyparser处理）数据可以收集为对象：credentials：{name: '', password:''} 
+            - 这样写：name="credentials[]",数据可以收集为数组
+          -->
         </div>
 
         <div class="form-group">
